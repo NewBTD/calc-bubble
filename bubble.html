@@ -30,7 +30,8 @@
         position: absolute;
         bottom: 0;
         left: calc(var(--x) * 10%);
-        animation: to-top calc(var(--t) * 1ms) infinite, swing calc(var(--t) * 0.3ms) infinite alternate;
+        animation: to-top calc(var(--t) * 1ms) infinite,
+          swing calc(var(--t) * 0.3ms) infinite alternate;
         transform: translateX(0px);
       }
       @keyframes to-top {
@@ -59,7 +60,24 @@
       <div class="bubble" style="--y: 5; --x: 8; --t: 2000"></div>
     </div>
     <div class="action">
-      <button>Add Bubble</button>
+      <button id="add-bubble-btn">Add Bubble</button>
     </div>
   </body>
+
+  <script>
+    const addButton = document.getElementById('add-bubble-btn');
+    const sky = document.querySelector('.sky');
+
+    addButton.addEventListener('click', () => {
+      const newBubble = document.createElement('div');
+      const y = Math.random() * 5;
+      const x = Math.random() * 10;
+      const t = Math.random() * 1500 + 500;
+
+      newBubble.classList.add('bubble');
+      newBubble.style = `--y: ${y}; --x: ${x}; --t: ${t}`;
+
+      sky.appendChild(newBubble);
+    });
+  </script>
 </html>
