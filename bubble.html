@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .sky {
+        background-color: deepskyblue;
+        width: 100%;
+        height: calc(100vh - 3rem);
+      }
+      .action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+      .bubble {
+        --size: 100px;
+        width: calc(var(--size));
+        height: calc(var(--size));
+        border-radius: 100%;
+        background-color: #ff08;
+        position: absolute;
+        bottom: 0;
+        left: calc(var(--x) * 10%);
+        animation: to-top calc(var(--t) * 1ms) infinite, swing calc(var(--t) * 0.3ms) infinite alternate;
+        transform: translateX(0px);
+      }
+      @keyframes to-top {
+        from {
+          bottom: calc(0px - var(--size));
+        }
+        to {
+          bottom: 100%;
+        }
+      }
+      @keyframes swing {
+        from {
+          transform: translateX(calc(var(--y) * 20%));
+        }
+        to {
+          transform: translateX(calc(var(--y) * -20%));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sky">
+      <div class="bubble" style="--y: 1; --x: 3; --t: 700"></div>
+      <div class="bubble" style="--y: 3; --x: 1; --t: 1200"></div>
+      <div class="bubble" style="--y: 2; --x: 6; --t: 800"></div>
+      <div class="bubble" style="--y: 5; --x: 8; --t: 2000"></div>
+    </div>
+    <div class="action">
+      <button>Add Bubble</button>
+    </div>
+  </body>
+</html>
